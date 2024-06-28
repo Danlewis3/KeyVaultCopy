@@ -45,7 +45,7 @@ This Azure Function App provides the capability to back up secrets from an Azure
 1. Navigate to your Function App in the Azure Portal.
 2. Under **Settings**, select **Configuration**.
 3. Add the following application settings:
-   - **Name**: `AzureWebJobsStorage`
+   - **Name**: `STORAGE_CONNECTION_STRING`
      - **Value**: `<your-storage-account-connection-string>`
    - **Name**: `STORAGE_CONTAINER_NAME`
      - **Value**: `<your-blob-container-name>`
