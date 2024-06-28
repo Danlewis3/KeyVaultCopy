@@ -49,10 +49,10 @@ namespace KeyVaultBackupRestore
 
             if (action.ToLower() == "restore" && string.IsNullOrEmpty(destinationVaultName))
             {
-                return new BadRequestObjectResult("Please provide 'destinationVaultName' for restore.");
+                return new BadRequestObjectResult("Please provide 'Target Key Vault Name' for restore.");
             }
 
-            string storageConnectionString = _configuration["AzureWebJobsStorage"];
+            string storageConnectionString = _configuration["STORAGE_CONNECTION_STRING"];
             string containerName = _configuration["STORAGE_CONTAINER_NAME"];
             var blobServiceClient = new BlobServiceClient(storageConnectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
@@ -98,8 +98,8 @@ namespace KeyVaultBackupRestore
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred during the backup/restore operation.");
-                return new ObjectResult("An error occurred during the backup/restore operation.") { StatusCode = 500 };
+                _logger.LogError(ex, "An error occurred");
+                return new ObjectResult("An error occurred") { StatusCode = 500 };
             }
         }
     }
